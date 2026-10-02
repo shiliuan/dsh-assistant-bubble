@@ -1,0 +1,55 @@
+{
+  "name": "dsh-assistant-bubble",
+  "version": "1.1.0",
+  "description": "Give the DSH assistant reply the same bubble treatment the user messages already have — same background, radius and padding, still left-aligned. Pure CSS, zero runtime cost, no tools exposed to the model.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "bubble",
+    "chat",
+    "ui",
+    "theme"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.zh.md"
+  ],
+  "scripts": {
+    "verify": "node scripts/verify-client-bundle.mjs lib/client.js"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiliuan/dsh-assistant-bubble.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shiliuan/dsh-assistant-bubble/issues"
+  },
+  "homepage": "https://github.com/shiliuan/dsh-assistant-bubble#readme",
+  "engines": {
+    "node": ">=18"
+  }
+}
