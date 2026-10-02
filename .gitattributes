@@ -1,0 +1,21 @@
+# Normalize line endings so a Windows checkout does not rewrite every file.
+# Without this, `git add` on Windows stages whole-file diffs as soon as a
+# contributor's editor touches a line.
+* text=auto eol=lf
+
+# Windows-only scripts, if any are ever added, must keep CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary assets (screenshots) must never be normalized.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.mp4 binary
+*.wav binary
+*.mp3 binary
+
+# Keep diffs readable and mark generated files.
+package-lock.json -diff linguist-generated
