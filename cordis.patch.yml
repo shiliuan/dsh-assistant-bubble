@@ -1,0 +1,15 @@
+# dsh-assistant-bubble bundle patch.
+#
+# The visible work is entirely on the browser side, declared by the `dsh.client`
+# manifest in package.json. This patch still contributes one host row, because a
+# bundle that carries a browser half is mounted the same way every other bundle
+# is: one loader entry per plugin, whose manifest then tells the client module
+# system to load `lib/client.js` into the page. An installed dependency that is
+# never mounted would leave the browser half unreachable.
+#
+# The row itself provides nothing — see lib/index.js. Only additive `insert`
+# rows appear here, so no shipped row is ever overridden.
+
+- insert:
+    - id: assistant-bubble
+      name: 'dsh-assistant-bubble'
