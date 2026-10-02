@@ -1,0 +1,25 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify the client bundle loads
+        run: node scripts/verify-client-bundle.mjs lib/client.js
+
+      - name: Verify the checker itself still catches known failures
+        run: node scripts/verify-client-bundle.mjs --self-test lib/client.js
+
+      - name: Check the bundle is syntactically valid on the Node side too
+        run: node --check lib/index.js
